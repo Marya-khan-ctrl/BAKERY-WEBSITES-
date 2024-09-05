@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>Cookeenyaa</title>
+  </head>
+  <body>
+    <style>
+       
+        /* Navbar background and logo text color */
+        .navbar {
+            background-color: #343a40; /* Dark background */
+        }
+        
+        .navbar-brand .logo-text {
+            color: #ffffff; /* White logo text */
+            font-weight: bold;
+        }
+        
+        /* Navbar links */
+        .navbar-nav .nav-link {
+            color: #ffffff;
+            font-size: 18px;
+            padding: 10px 30px;
+        }
+        .carousel-inner img {
+    border-radius: 20px; /* Adjust radius as needed */
+}
+.carousel-item:hover img {
+    transform: scale(1.05); /* Slight zoom effect */
+    transition: transform 0.3s ease-in-out;
+}
+
+
+        .navbar-nav .nav-link.active {
+            color: #ff6347; /* Active link color */
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: #ff6347; /* Hover effect */
+        }
+        
+        /* Cart icon size */
+        .fa-cart-shopping {
+            font-size: 24px;
+        }
+        
+        /* Logo and text alignment */
+        .navbar-brand img {
+            height: 60px; /* Slightly increased logo size */
+            margin-right: 15px;
+        }
+        
+        /* Toggle button styling */
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.5); /* Light border for the button */
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+        
+        /* Carousel image height */
+        .carousel-inner img {
+            height: 450px; 
+            object-fit: cover;
+        }
+        
+        .carousel-container {
+            padding: 10px;
+        }
+        .carousel-fade .carousel-item {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.carousel-fade .carousel-item-next,
+.carousel-fade .carousel-item-prev,
+.carousel-fade .carousel-item.active {
+    opacity: 1;
+}
+
+        /* Product cards */
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .product-card h5 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .product-card p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .product-card .price {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+        }
+        
+       
+        .cart-section h2 {
+            margin-top: 0;
+        }
+
+        .cart-total {
+            font-weight: bold;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        button {
+            margin-top: 5px;
+            cursor: pointer;
+            padding: 7px 15px;
+            background-color: #293139;
+            color: white;
+            border: none;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            background-color: #8995a1;
+        }
+
+        .cart-section {
+        position: fixed; /* Fixed position */
+        top: 100px; /* Adjust the top position according to your layout */
+        right: 20px; /* Positioning it on the right side */
+        width: 300px; /* Fixed width */
+        z-index: 1000; /* Bring the cart on top of other elements */
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        display: none; /* Hidden by default */
+        margin: 20px 0;
+    }
+    footer {
+    background-color: #343a40; /* Dark background */
+    color: #ffffff;
+}
+
+footer h5 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ff6347;
+}
+
+footer .fab {
+    font-size: 20px;
+}
+
+footer p, footer ul {
+    margin: 0;
+    padding: 0;
+}
+
+footer ul {
+    list-style-type: none;
+}
+
+footer ul li {
+    margin-bottom: 10px;
+}
+#checkoutBtn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#checkoutBtn:hover {  
+    background-color: #218838;
+}
+
+
+    @media (max-width: 768px) {
+        /* Adjust cart position for mobile screens */
+        .cart-section {
+            position: relative; /* Reset position for smaller screens */
+            width: 100%;
+            margin-top: 20px;
+            right: 0;
+            top: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+    .carousel-inner img {
+        height: 300px; /* Adjust height for smaller screens */
+    }
+}
+
+    </style>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <!-- Logo and Text -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="logo.jpeg" alt="Logo" style="height: 60px; width: auto; margin-right: 15px; border-radius: 10px;">
+                <h4><span class="logo-text">Cookeenyaa</span></h4>
+            </a>
+            
+            <!-- Toggle button for mobile view -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active" href="javascript:void(0);" onclick="toggleCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <div id="cartSection" class="cart-section">
+        <h2>Cart</h2>
+        <div id="cart"></div>
+        <div class="cart-total">
+            <span>Total:</span>
+            $<span id="totalPrice">0</span>
+        </div>
+        <div class="checkout-btn-container">
+            <a href="payment.html">
+                <button id="checkoutBtn" class="btn btn-primary">Proceed to Checkout</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Carousel -->
+    <div class="container carousel-container mt-5">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="carousal.png" class="d-block w-100" alt="Slide 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="carusal2.png" class="d-block w-100" alt="Slide 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="carousal3.png" class="d-block w-100" alt="Slide 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    
+    <div class="container mt-5">
+        <div class="row" id="store-items">
+            <!-- Product 1 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="product1.jpeg" alt="Sweet Item">
+                    <button onclick="addToCart('Sweet Item', 5)">Add to Cart</button>
+                    <h5>Sweet Item</h5>
+                    <p>$5</p>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="product2.jpeg" alt="Cupcake Item">
+                    <button onclick="addToCart('Cupcake Item', 5)">Add to Cart</button>
+                    <h5>Cupcake</h5>
+                    <p>$5</p>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="product3.jpeg" alt="Doughnut Item">
+                    <button onclick="addToCart('Doughnut Item', 5)">Add to Cart</button>
+                    <h5>Doughnut</h5>
+                    <p>$5</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mt-5">
+        <div class="row" id="store-items">
+            <!-- Product 4 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="product4.jpeg" alt="Doughnut">
+                    <button onclick="addToCart('Doughnut', 15)">Add to Cart</button>
+                    <h5>Doughnut</h5>
+                    <p>$15</p>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="product5.jpeg" alt="Candies">
+                    <button onclick="addToCart('Candies', 20)">Add to Cart</button>
+                    <h5>Candies</h5>
+                    <p>$20</p>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="product6.jpeg" alt="Doughnut Item">
+                    <button onclick="addToCart('Doughnut Item', 3)">Add to Cart</button>
+                    <h5>Doughnut</h5>
+                    <p>$3</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mt-5">
+        <div class="row" id="store-items">
+            <!-- Product 7 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="product7.jpeg" alt="Gulaab Jamun">
+                    <button onclick="addToCart('Gulaab Jamun', 28)">Add to Cart</button>
+                    <h5>Gulaab Jamun</h5>
+                    <p>$28</p>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="product8.jpeg" alt="Cupcake Item">
+                    <button onclick="addToCart('Cupcake Item', 25)">Add to Cart</button>
+                    <h5>Cupcakes</h5>
+                    <p>$25</p>
+                </div>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="product9.jpg" alt="Doughnut Item">
+                    <button onclick="addToCart('Doughnut Item', 15)">Add to Cart</button>
+                    <h5>Doughnuts</h5>
+                    <p>$15</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row" id="store-items">
+            <!-- Product 10 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="product10.jpg" alt="Rainbow Item">
+                    <button onclick="addToCart('Rainbow Item', 35)">Add to Cart</button>
+                    <h5>Rainbow Doughnuts</h5>
+                    <p>$35</p>
+                </div>
+            </div>
+
+            <!-- Product 11 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="product11.png" alt="Cupcake Item">
+                    <button onclick="addToCart('Cupcake Item', 5)">Add to Cart</button>
+                    <h5>Cupcake</h5>
+                    <p>$5</p>
+                </div>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="product12.jpeg" alt="Doughnut Item">
+                    <button onclick="addToCart('Doughnut Item', 25)">Add to Cart</button>
+                    <h5>Doughnut</h5>
+                    <p>$25</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        
+        // Function to add items to the cart
+        function addToCart(productName, price) {
+            const product = { name: productName, price: price };
+            cart.push(product);
+            updateCartDisplay();
+        }
+    
+        // Function to update the cart UI
+        function updateCartDisplay() {
+            const cartContainer = document.getElementById('cart');
+            const totalPriceElement = document.getElementById('totalPrice');
+            let total = 0;
+            cartContainer.innerHTML = '';
+    
+            cart.forEach((item, index) => {
+                total += item.price;
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <span>${item.name} - $${item.price}</span>
+                    <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartContainer.appendChild(cartItem);
+            });
+    
+            totalPriceElement.innerText = total.toFixed(2);
+        }
+    
+        // Function to remove an item from the cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+    
+        // Function to toggle the cart visibility
+        function toggleCart() {
+            const cartSection = document.getElementById('cartSection');
+            cartSection.style.display = cartSection.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+    
+
+
+
+
+    <!-- Footer Section -->
+<footer class="bg-dark text-white pt-4">
+    <div class="container">
+        <div class="row">
+            <!-- About Us -->
+            <div class="col-md-4">
+                <h5>About Cookeenyaa</h5>
+                <p>Cookeenyaa is your go-to platform for sweet treats, delicious cupcakes, and mouthwatering doughnuts. We aim to bring joy to your life with our delightful recipes and baked goods.</p>
+            </div>
+
+           
+
+            <!-- Contact Us -->
+            <div class="col-md-4">
+                <h5>Contact Us</h5>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Sweet Street, Dessert City, Yumland</p>
+                <p><i class="fas fa-phone-alt"></i> +123 456 7890</p>
+                <p><i class="fas fa-envelope"></i> info@cookeenyaa.com</p>
+            </div>
+        </div>
+        
+        <!-- Social Media Links -->
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <p>&copy; 2024 Cookeenyaa. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
